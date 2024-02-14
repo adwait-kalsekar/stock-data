@@ -1,0 +1,64 @@
+{% extends "base/main.html" %}
+
+
+{% block content %}
+
+<section class="timeline-section section-padding" id="section_3">
+    <div class="section-overlay"></div>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 text-center">
+                <h2 class="text-white mb-4">About the Project</h1>
+            </div>
+
+            <div class="col-lg-10 col-12 mx-auto">
+                <div class="timeline-container">
+                    <ul class="vertical-scrollable-timeline" id="vertical-scrollable-timeline">
+                        <div class="list-progress">
+                            <div class="inner"></div>
+                        </div>
+
+                        <li>
+                            <h4 class="text-white mb-3">Made with Django - the Python Web Framework</h4>
+
+                            <p class="text-white">This Project is made with Django and Django templates, utilizing python for the backend code and HTML, CSS &amp; JavaScript for the frontend code.</p>
+
+                            <div class="icon-holder">
+                                <i class="bi-search"></i>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <h4 class="text-white mb-3">YFinance API</h4>
+
+                            <p class="text-white">It makes use of Yahoo Finance API through the yFinance library. It fetches data using the library, stores it in a django model, and fetches the data on the frontend and shows a BarGraph Visualization using D3.js</p>
+
+                            <div class="icon-holder">
+                                <i class="bi-bookmark"></i>
+                            </div>
+                        </li>
+
+                        <li>
+                            <h4 class="text-white mb-3">More Stocks Coming Soon</h4>
+
+                            <p class="text-white">Click on the individual stocks in the Top Navigation Bar's StockData dropdown to access the last 1 month data of the 5 selected stocks
+
+                            </p>
+
+                            <div class="icon-holder">
+                                <i class="bi-book"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+

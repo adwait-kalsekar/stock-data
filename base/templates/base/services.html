@@ -1,0 +1,78 @@
+{% extends "base/main.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12 text-center">
+                <h3 class="mb-4">Our Services</h3>
+            </div>
+
+            <div class="col-lg-8 col-12 mt-3 mx-auto">
+                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                    <div class="d-flex">
+                        <img src={% static "/images/service_image_01.png" %} class="custom-block-image img-fluid" alt="">
+
+                        <div class="custom-block-topics-listing-info d-flex">
+                            <div>
+                                <h5 class="mb-2">Uses Yahoo Finance API</h5>
+
+                                <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit animi necessitatibus</p>
+
+                                <a href="" class="btn custom-btn mt-3 mt-lg-4">Learn More</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                    <div class="d-flex">
+                        <img src={% static "/images/service_image_02.png" %} class="custom-block-image img-fluid" alt="">
+
+                        <div class="custom-block-topics-listing-info d-flex">
+                            <div>
+                                <h5 class="mb-2">Integrates D3.js</h5>
+
+                                <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit animi necessitatibus</p>
+
+                                <a href="" class="btn custom-btn mt-3 mt-lg-4">Learn More</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                    <div class="d-flex">
+                        <img src={% static "/images/service_image_03.png" %} class="custom-block-image img-fluid" alt="">
+
+                        <div class="custom-block-topics-listing-info d-flex">
+                            <div>
+                                <h5 class="mb-2">Stores data in SQLite Database using Django API</h5>
+
+                                <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit animi necessitatibus</p>
+
+                                <a href="" class="btn custom-btn mt-3 mt-lg-4">Learn More</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+        </div>
+    </div>
+</section>
+
+
+
+
+{% endblock content %}
+

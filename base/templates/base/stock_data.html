@@ -1,0 +1,128 @@
+{% extends "base/main.html" %}
+
+
+{% block content %}
+
+<section class="explore-section section-padding" id="section_2">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 text-center">
+                <h2 class="mb-4">Stock Data for Last 1 month for {{ symbol }}</h1>
+            </div>
+
+        </div>
+    </div>
+
+    
+
+      <div class="col-lg-10 col-12 mx-auto">
+        <div class="timeline-container">
+            <h4>High</h4>
+            <div class="pb-16">
+                <svg id="chart"></svg>
+              </div>
+            
+              <script src="https://d3js.org/d3.v7.min.js"></script>
+              <script>
+
+                const ticker = "{{symbol}}";
+                console.log(ticker)
+
+                let jsonData; 
+
+                fetch(`/api/v1/get_stock_data/${ticker}`)
+                  .then(function(response) {
+                    if (!response.ok) {
+                      throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                  })
+                  .then(function(data) {
+                    // Store the JSON data in the variable
+                    jsonData = data;
+                    makeHighGraph(jsonData);
+                  })
+                  .catch(function(error) {
+                    // Handle errors
+                    console.error('Error fetching data:', error);
+                  });
+
+
+
+                function makeHighGraph(jsonData) {
+                  const data = jsonData;
+            
+                  // Define dimensions and margins
+                  const margin = { top: 40, right: 20, bottom: 30, left: 40 };
+                  const width = 1100 - margin.left - margin.right;
+                  const height = 500 - margin.top - margin.bottom;
+
+                  // Create SVG element
+                  const svg = d3.select("#chart")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                    .append("g")
+                    .attr("transform", `translate(${margin.left},${margin.top})`);
+
+                  // Create scales
+                  const x = d3.scaleBand()
+                    .range([0, width])
+                    .domain(data.map(d => d.formatted_date))
+                    .padding(0.1);
+
+                  const y = d3.scaleLinear()
+                    .range([height, 0])
+                    .domain([90, d3.max(data, d => d.high)]);
+
+                  // Add x-axis
+                  svg.append("g")
+                    .attr("transform", `translate(0,${height})`)
+                    .call(d3.axisBottom(x));
+
+                  // Add y-axis
+                  svg.append("g")
+                    .call(d3.axisLeft(y));
+
+                  // Define line generator
+                  const line = d3.line()
+                    .x(d => x(d.formatted_date) + x.bandwidth() / 2)
+                    .y(d => y(d.high));
+
+                  // Add line path with color #80d0c7
+                  svg.append("path")
+                    .datum(data)
+                    .attr("fill", "none")
+                    .attr("stroke", "#80d0c7") // Change line color
+                    .attr("stroke-width", 2)
+                    .attr("d", line);
+
+                  // Add data points as circles
+                  svg.selectAll(".dot")
+                    .data(data)
+                    .enter().append("circle")
+                    .attr("class", "dot")
+                    .attr("cx", d => x(d.formatted_date) + x.bandwidth() / 2)
+                    .attr("cy", d => y(d.high))
+                    .attr("r", 4)
+                    .attr("fill", "#80d0c7"); // Change data points color
+
+                  // Add text labels
+                  svg.selectAll(".text")
+                    .data(data)
+                    .enter().append("text")
+                    .attr("class", "text")
+                    .attr("x", d => x(d.formatted_date) + x.bandwidth() / 2)
+                    .attr("y", d => y(d.high) + (height - y(d.high)) / 2)
+                    .attr("dy", "0.35em")
+                    .attr("text-anchor", "middle")
+                    .attr("fill", "black");
+
+                }
+              </script>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+

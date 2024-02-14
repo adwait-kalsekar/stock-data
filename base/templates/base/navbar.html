@@ -1,0 +1,73 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href={% url "home" %}>
+            <image class="logo" src={% static "images/logo.svg" %} />
+            <span><i>ADStocks</i></span>
+        </a>
+
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href={% url "home" %}>Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href={% url "about" %}>About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href={% url "services" %}>Services</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">StockData</a>
+
+                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                        <li><a class="dropdown-item" href={% url "stockdata" "MSFT" %}>Microsoft</a></li>
+
+                        <li><a class="dropdown-item" href={% url "stockdata" "AAPL" %}>Apple</a></li>
+
+                        <li><a class="dropdown-item" href={% url "stockdata" "NKE" %}>Nike</a></li>
+
+                        <li><a class="dropdown-item" href={% url "stockdata" "SBUX" %}>Starbucks</a></li>
+
+                        <li><a class="dropdown-item" href={% url "stockdata" "DIS" %}>Disney</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href={% url "fetchdata" %}>FetchData</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href={% url "presenting" %}>Presenting</a>
+                </li>
+
+                
+            </ul>
+
+            {% if request.user.is_authenticated %}
+                <span class="navbar-welcome-text">Welcome, {{user.username}}</span>
+                <div class="d-none d-lg-block dropdown">
+                    <span class="navbar-icon bi-person smoothscroll"></span>
+                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                        <li><a class="dropdown-item" href={% url "logout" %}>Logout</a></li>
+                    </ul>
+                </div>
+                
+            {% else %}
+                <div class="navbar-buttons">
+                    <div class="d-none d-lg-block">
+                        <a href={% url "login" %} class="navbar-button navbar-button-login smoothscroll">Log In</a>
+                    </div>
+                    <div class="d-none d-lg-block">
+                        <a href={% url "register" %} class="navbar-button navbar-button-signup smoothscroll">Signup</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</nav>

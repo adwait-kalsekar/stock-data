@@ -1,0 +1,88 @@
+{% extends "base/main.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="topics-detail-section section-padding" id="topics-detail">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8 col-12 m-auto">
+                <h3 class="mb-4">Data Presenting Page</h3>
+
+                <blockquote>
+                    The images are stored in static/images/visualizations folder in the root directory.
+                    The Python Notebook (.ipynb) and the dataset have been saved in the data folder in the root directory
+                </blockquote>
+
+                <p>I collected historical stock price data for two ticker symbols (AAPL and MSFT) using the Yahoo Finance API (yfinance) and calculated statistical properties such as mean, median, mode, maximum, minimum for each ticker symbol.
+
+                <p>Then, I visualized theese statistical properties using Matplotlib. Each statistical property was represented as a line plot against the ticker symbols (AAPL and MSFT) on the x-axis.</p>
+
+
+                <div class="col ">
+                    <p><strong>BoxPlots representing the 2 Tickers:</strong></p>
+
+                    <div class="col-lg-10 col-md-10 col-12 data-presenting">
+                        <img src={% static "/images/visualizations/01.png" %} class="topics-detail-block-image img-fluid">
+                    </div>
+
+                    <p>As we can see there are no outliers</p>
+
+                    <p><strong>Statistical properties:</strong></p>
+
+                    <div class="col-lg-10 col-md-10 col-12 data-presenting">
+                        <img src={% static "/images/visualizations/02.png" %} class="topics-detail-block-image img-fluid">
+                    </div>
+
+                    <div class="col-lg-10 col-md-10 col-12 data-presenting">
+                        <img src={% static "/images/visualizations/03.png" %} class="topics-detail-block-image img-fluid">
+                    </div>
+
+                    <div class="col-lg-10 col-md-10 col-12 data-presenting">
+                        <img src={% static "/images/visualizations/05.png" %} class="topics-detail-block-image img-fluid">
+                    </div>
+
+                    <p><strong>Correlation Matrix between the two Tickers:</strong></p>
+
+                    <div class="col-lg-10 col-md-10 col-12 data-presenting">
+                        <img src={% static "/images/visualizations/04.png" %} class="topics-detail-block-image img-fluid">
+                    </div>
+
+                    <div class="col-lg-10 col-md-10 col-12 data-presenting">
+                        <img src={% static "/images/visualizations/09.png" %} class="topics-detail-block-image img-fluid">
+                    </div>
+
+                    <div class="col-lg-10 col-md-10 col-12 data-presenting">
+                        <img src={% static "/images/visualizations/06.png" %} class="topics-detail-block-image img-fluid">
+                    </div>
+
+                    <div class="col-lg-10 col-md-10 col-12 data-presenting">
+                        <img src={% static "/images/visualizations/07.png" %} class="topics-detail-block-image img-fluid">
+                    </div>
+
+                    <div class="col-lg-10 col-md-10 col-12 data-presenting">
+                        <img src={% static "/images/visualizations/08.png" %} class="topics-detail-block-image img-fluid">
+                    </div>
+
+                    <div class="col-lg-10 col-md-10 col-12 data-presenting">
+                        <img src={% static "/images/visualizations/10.png" %} class="topics-detail-block-image img-fluid">
+                    </div>
+
+                </div>
+
+                <p>By visually comparing the statistical properties between the two ticker symbols, I gained insights into their respective distributions and central tendencies over the specified time period (3 months in this case). This procedure allowed me to explore and compare the key statistical properties of the stock prices for AAPL and MSFT and identify any notable differences or similarities between them.</p>
+                <p>The scatter plot depicting time against price reveals discernible trends and fluctuations in stock prices over the analyzed period. Interestingly, both companies showcase distinct patterns, with Apple's stock prices exhibiting more volatility compared to Microsoft's.</p>
+                <p>These insights are crucial for investors seeking to diversify their portfolios and manage risk effectively. By leveraging such visualizations, investors can make informed decisions based on a comprehensive understanding of each company's stock performance and behavior.</p>
+            
+                
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
